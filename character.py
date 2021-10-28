@@ -1,7 +1,5 @@
 import pygame
-from pygame import rect
 from setup import *
-
 
 class Character(object):
     def __init__(self, x, y, w, h):
@@ -36,17 +34,17 @@ class Character(object):
         elif self.x < 0:
             self.x = 0
 
-    def bullets(self, x, y, dx, dy):
-        self.x = y
-        self.y = x
-        self.dx = dy
-        self.dy = dx
+    #def bullets(self, x, y, dx, dy):
+        #self.x = y
+        #self.y = x
+        #self.dx = dy
+        #self.dy = dx
 
-        bullet = []
-        shoot = bullet(self.x, self.y, self.dx, self.dy)
+        #bullet = []
+        #shoot = bullet(self.x, self.y, self.dx, self.dy)
 
-        keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_z]
+        #keystate = pygame.key.get_pressed()
+        #if keystate[pygame.K_z]
 
     def draw(self):
         pygame.draw.rect(game_window, WHITE, [self.x, self.y, self.w, self.h])
