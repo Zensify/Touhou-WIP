@@ -1,6 +1,4 @@
 import pygame
-from pygame import draw
-from pygame.display import update
 from character import *
 from setup import *
 
@@ -10,7 +8,7 @@ clock = pygame.time.Clock()
 
 # Create some character objects
 marisa = Character(620, 250, 25, 25)
-shoot = Character(5, 5)
+shoot = Character(1, 1, 5, 5)
 
 # -------- Main Program Loop -----------
 loop = True
