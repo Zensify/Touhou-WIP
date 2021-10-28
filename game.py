@@ -8,7 +8,7 @@ clock = pygame.time.Clock()
 
 # Create some character objects
 marisa = Character(620, 250, 25, 25)
-shoot = Character(1, 1, 5, 5)
+#shoot = Character(1, 1, 5, 5)
 
 # -------- Main Program Loop -----------
 loop = True
@@ -26,7 +26,7 @@ while loop:
     game_window.fill(BLACK)
 
     marisa.draw()
-    shoot.draw()
+    #shoot.draw()
 
     pygame.display.flip()
 
