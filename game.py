@@ -1,8 +1,8 @@
 import pygame
-from pygame.constants import KEYDOWN, MOUSEBUTTONDOWN
+from pygame.constants import KEYDOWN
+from enemies import *
 from character import *
 from setup import *
-from menu import *
 
 pygame.init()
 fps = 60
@@ -18,15 +18,10 @@ bullets = []
 loop = True
 while loop:
     clock.tick(fps)
-    click = False
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             loop = False
-        if event.type == KEYDOWN:
-            if event.key == MOUSEBUTTONDOWN:
-                if event.button == 1: 
-                    click = True
         if event.type == KEYDOWN:
             if event.key == pygame.K_z:
                 bullets.append(Bullet(marisa.x, marisa.y - 35))
@@ -37,12 +32,11 @@ while loop:
         bullet.move()
 
     # DRAW
-    #game_window.fill(BLACK)
+    game_window.fill(BLACK)
 
     marisa.draw()
     for bullet in bullets:
         bullet.draw()
 
     pygame.display.flip()
-
 pygame.quit()
