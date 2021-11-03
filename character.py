@@ -44,12 +44,11 @@ class Character(object):
 
 class Bullet(object):
     def __init__(self, x, y):
-        self.image = pygame.image.load("images\GreenBullet1.png")
+        self.image = pygame.image.load("assets\marisa\GreenBullet1.png")
         self.rect = self.image.get_rect()
         self.vel = -5
         self.x = x
         self.y = y
-        self.h = 20
 
     def move(self):
         self.y += self.vel
