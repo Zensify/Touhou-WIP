@@ -7,8 +7,10 @@ class Enemies(object):
         self.y = y
         self.w = w
         self.h = h
-    
-    def movement(self, dx, dy, vel):
+        self.health = 1
+        self.score = 75
+             
+    def Enemy_movement(self, dx, dy, vel):
         self.dx = dx
         self.dy = dy
         self.vel = vel

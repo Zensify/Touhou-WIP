@@ -8,8 +8,11 @@ class Character(object):
         self.y = y
         self.w = w
         self.h = h
+        self.health = 1
+        self.lives = 3
+        self.damage = 5
 
-    def movement(self, x, y):
+    def move(self, x, y):
         self.dy = 0
         self.dx = 0
 
@@ -26,32 +29,17 @@ class Character(object):
         self.x += self.dx
 
         # Clamp Player To Screen
-        if self.y < 0:
-            self.y = 0
-        elif self.y > 625:
-            self.y = 625
-        if self.x > 775:
-            self.x = 775
-        elif self.x < 0:
-            self.x = 0
+        if self.y < 30:
+            self.y = 30
+        elif self.y > 575:
+            self.y = 575
+        if self.x > 525:
+            self.x = 525
+        elif self.x < 50:
+            self.x = 50
 
     def draw(self):
         pygame.draw.rect(game_window, WHITE, [self.x, self.y, self.w, self.h])
 
     def __str__(self):
         return f"Character at [{self.x}, {self.y}]"
-
-
-class Bullet(object):
-    def __init__(self, x, y):
-        self.image = pygame.image.load("assets\marisa\GreenBullet1.png")
-        self.rect = self.image.get_rect()
-        self.vel = -5
-        self.x = x
-        self.y = y
-
-    def move(self):
-        self.y += self.vel
-
-    def draw(self):
-        game_window.blit(self.image, (self.x, self.y))
