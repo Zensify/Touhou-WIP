@@ -10,7 +10,7 @@ class Character(object):
         self.h = h
         self.health = 1
         self.lives = 3
-        self.damage = 5
+        self.damage = 1
 
     def move(self, x, y):
         self.dy = 0
