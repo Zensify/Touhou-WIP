@@ -11,10 +11,10 @@ class Bullet(object):
     def Bullet_move(self):
         self.y += self.vel
 
+        # Make a Remove Function for Bullets list
         if self.y < 30:
-            self.y = 0
-        elif self.y > 575:
             self.y = 1000
+            self.vel = 0
 
     def draw(self):
         game_window.blit(self.image, (self.x, self.y))
