@@ -1,2 +1,2 @@
 # Touhou-WIP
-Attempt at recreating EoSD on Pygame. Project will end in January
+Attempt at recreating EoSD in Pygame. Project will end in January
