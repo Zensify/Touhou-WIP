@@ -1,11 +1,12 @@
 import pygame
-from enemies import Enemies
 from setup import *
 from character import *
+from enemies import Enemies
 from bullet import *
 
 pygame.init()
 fps = 60
+cooldown = 0
 clock = pygame.time.Clock()
 marisa = Character(280, 550, 25, 25)
 IceFairy = Enemies(280, 75, 25, 25)
@@ -15,6 +16,7 @@ enemies = []
 
 
 def main():
+    global cooldown
     # -------- Main Program Loop -----------
     loop = True
     while loop:
@@ -22,32 +24,32 @@ def main():
         loop = game_event()
         game_logic()
         game_draw()
+
+        if cooldown != 0:
+            cooldown += -1
+
         pygame.display.flip()
     pygame.quit()
 
 
 def game_event():
+    global cooldown
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_z:
-                bullets.append(Bullet(marisa.x, marisa.y - 35))
+    keystate = pygame.key.get_pressed()
+    if keystate[pygame.K_z] and cooldown == 0:
+        bullets.append(Bullet(marisa.x, marisa.y - 35))
+        cooldown = 20
     return True
 
 
 def game_logic():
-    marisa.move(2, 1.2)
+    marisa.move(2, 1.8)
     for i in range(len(bullets) - 1, -1, -1):
         bullets[i].bullet_move()
         if bullets[i].y < 30:
             bullets.pop(i)
-    for i in range(len(enemies) - 1, -1, -1):
-        enemies[i].enemy_movement()
-        if bullets[i].y == enemies[i].y:
-            marisa.damage - enemies.health
-        if enemies[i].health <= 0:
-            enemies.pop(i)
 
 
 def game_draw():
