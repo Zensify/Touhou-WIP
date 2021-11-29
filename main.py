@@ -1,8 +1,9 @@
 import pygame
 from setup import *
 from character import *
-from enemies import Enemies
+from enemies import *
 from bullet import *
+from menu import *
 
 pygame.init()
 fps = 60
@@ -17,16 +18,25 @@ enemies = []
 
 def main():
     global cooldown
+    level = "menu"
+
     # -------- Main Program Loop -----------
     loop = True
     while loop:
         clock.tick(fps)
-        loop = game_event()
-        game_logic()
-        game_draw()
 
-        if cooldown != 0:
-            cooldown += -1
+        # Check for events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                loop = False
+
+        # Check Level
+        if level == 'menu':
+            level = menuScreen()
+        elif level == 'play':
+            game_event()
+            game_logic()
+            game_draw()
 
         pygame.display.flip()
     pygame.quit()
@@ -34,18 +44,18 @@ def main():
 
 def game_event():
     global cooldown
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            return False
+
     keystate = pygame.key.get_pressed()
     if keystate[pygame.K_z] and cooldown == 0:
         bullets.append(Bullet(marisa.x, marisa.y - 35))
-        cooldown = 20
-    return True
+        cooldown = 20  # --- bullets can only be shot every 20 frames
 
 
 def game_logic():
+    global cooldown
     marisa.move(2, 1.8)
+    if cooldown != 0:
+        cooldown += -1
     for i in range(len(bullets) - 1, -1, -1):
         bullets[i].bullet_move()
         if bullets[i].y < 30:
