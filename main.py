@@ -3,7 +3,7 @@ from setup import *
 from character import *
 from enemies import *
 from bullet import *
-from menu import *
+from ui import *
 
 pygame.init()
 fps = 60
@@ -44,7 +44,6 @@ def main():
 
 def game_event():
     global cooldown
-
     keystate = pygame.key.get_pressed()
     if keystate[pygame.K_z] and cooldown == 0:
         bullets.append(Bullet(marisa.x, marisa.y - 35))
@@ -60,6 +59,8 @@ def game_logic():
         bullets[i].bullet_move()
         if bullets[i].y < 30:
             bullets.pop(i)
+        if bullets[i].y == enemies[i].y:
+            SideBar.score + Enemies.score
 
 
 def game_draw():
@@ -75,6 +76,7 @@ def game_draw():
                                                      5))  # Bottom Line
     marisa.draw()
     IceFairy.draw()
+    SideBar.draw()
     for bullet in bullets:
         bullet.draw()
 

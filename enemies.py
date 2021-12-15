@@ -12,6 +12,9 @@ class Enemies(object):
         self.health = 1
         self.score = 75
 
+    def enemyMovement():
+        pass
+
     def draw(self):
         pygame.draw.rect(game_window, WHITE, [self.x, self.y, self.w, self.h])
 
