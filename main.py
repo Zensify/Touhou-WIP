@@ -33,7 +33,7 @@ def main():
             if event.type == pygame.QUIT:
                 loop = False
 
-        #Check Level
+        # Check Level
         if level == 'menu':
             level = menuScreen()
         elif level == 'play':
@@ -56,20 +56,17 @@ def game_event():
 def game_logic():
     global cooldown
     marisa.move(2, 1.8)
-    IceFairy.move(2)
+    IceFairy.enMove()
     if cooldown != 0:
         cooldown += -1
     for i in range(len(bullets) - 1, -1, -1):
         bullets[i].bullet_move()
         if bullets[i].y < 30:
             bullets.pop(i)
-    #for i in range(len(bullets) - 1, -1, -1):
-    #    for i in enemies:
-    #        enemy_rect = pygame.Rect(enemies[i].x, enemies[i].y, 25, 25)
-    #        if bullets[i].x == enemy_rect:
-    #            bullets[i].pop[i]
-    #            enemies[i].pop[i]
-    #            break
+    for i in range(len(enemies) - 1, -1, -1):
+        enemies[i].enMove()
+        if enemies[i].y < 30 and enemies[i].x > 525:
+            enemies.pop(i)
 
 
 def game_draw():
