@@ -22,8 +22,10 @@ class SideBar():
         self.health_points = 1
 
     def draw(self):
-        self.font = pygame.font.SysFont(None, 50)
-        self.score = self.font.render(str(self.score), True, WHITE, BLACK)
-        game_window.blit(self.score, (WINDOW_WIDTH - 45, WINDOW_HEIGHT / 8))
+        self.font = pygame.font.SysFont(None, 30)
+        score_text = self.font.render(str(self.score), True, WHITE, BLACK)
+        score_heading = self.font.render("Score Points : ", True, WHITE, BLACK )
+        game_window.blit(score_heading, (WINDOW_WIDTH - 230, WINDOW_HEIGHT / 8))
+        game_window.blit(score_text, (WINDOW_WIDTH - 80, WINDOW_HEIGHT / 8))
 
 

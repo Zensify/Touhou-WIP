@@ -5,15 +5,18 @@ from enemies import *
 from bullet import *
 from ui import *
 
+
 pygame.init()
 fps = 60
 cooldown = 0
 clock = pygame.time.Clock()
 marisa = Character(280, 550, 25, 25)
-IceFairy = Enemies(280, 75, 25, 25)
+IceFairy = Enemy_1(280, 75, 25, 25)
 
 bullets = []
 enemies = []
+
+sideBar = SideBar()
 
 
 def main():
@@ -30,7 +33,7 @@ def main():
             if event.type == pygame.QUIT:
                 loop = False
 
-        # Check Level
+        #Check Level
         if level == 'menu':
             level = menuScreen()
         elif level == 'play':
@@ -53,14 +56,20 @@ def game_event():
 def game_logic():
     global cooldown
     marisa.move(2, 1.8)
+    IceFairy.move(2)
     if cooldown != 0:
         cooldown += -1
     for i in range(len(bullets) - 1, -1, -1):
         bullets[i].bullet_move()
         if bullets[i].y < 30:
             bullets.pop(i)
-        if bullets[i].y == enemies[i].y:
-            SideBar.score + Enemies.score
+    #for i in range(len(bullets) - 1, -1, -1):
+    #    for i in enemies:
+    #        enemy_rect = pygame.Rect(enemies[i].x, enemies[i].y, 25, 25)
+    #        if bullets[i].x == enemy_rect:
+    #            bullets[i].pop[i]
+    #            enemies[i].pop[i]
+    #            break
 
 
 def game_draw():
@@ -76,9 +85,10 @@ def game_draw():
                                                      5))  # Bottom Line
     marisa.draw()
     IceFairy.draw()
-    SideBar.draw()
     for bullet in bullets:
         bullet.draw()
+    # --- Side Bar Items---
+    sideBar.draw()
 
 
 main()

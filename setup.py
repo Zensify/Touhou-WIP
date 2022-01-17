@@ -12,5 +12,5 @@ RED = (255, 0, 0)
 # -- Window --
 game_window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Touhou')
-background = pygame.image.load(r"assets\ui\images.jpg").convert_alpha()
-menuImage = pygame.image.load(r"assets\ui\mainmenu.png").convert_alpha()
+background = pygame.image.load(r"Touhou-WIP-main\assets\ui\images.jpg").convert_alpha()
+menuImage = pygame.image.load(r"Touhou-WIP-main\assets\ui\mainmenu.png").convert_alpha()
