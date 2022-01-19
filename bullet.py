@@ -4,7 +4,7 @@ from setup import *
 
 class Bullet(object):
     def __init__(self, x, y):
-        self.image = pygame.image.load(r"assets\marisa\Bullet.png")
+        self.image = pygame.image.load(r"Touhou-WIP-main\assets\marisa\Bullet.png")
         self.vel = -5
         self.x = x
         self.y = y

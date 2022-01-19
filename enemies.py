@@ -13,14 +13,15 @@ class Enemy_1(object):
         self.health = 1
         self.damage = 1
         self.score = 25
-        self.yspeed = 2
+        self.ySpeed = 0.015
+        #enHitbox = pygame.Rect(self.x, self.y, self.w, self.h)
 
     def enMove(self):
-        self.x += 1
-        self.yspeed += -0.01
-        self.y += self.yspeed
+        self.x += 0.015
+        self.ySpeed += -0.00000045
+        self.y += self.ySpeed
 
-    def draw(self):
+    def enDraw(self):
         pygame.draw.rect(game_window, WHITE, [self.x, self.y, self.w, self.h])
 
     def __str__(self):
